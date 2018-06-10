@@ -1,7 +1,7 @@
 // Copyright (c) 2011 The LevelDB Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
-
+#if defined(LEVELDB_PLATFORM_POSIX)
 #include <dirent.h>
 #include <errno.h>
 #include <fcntl.h>
@@ -26,6 +26,11 @@
 #include "util/mutexlock.h"
 #include "util/posix_logger.h"
 #include "util/env_posix_test_helper.h"
+
+#if defined(_MSC_VER)
+#include <BaseTsd.h>
+typedef SSIZE_T ssize_t;
+#endif
 
 namespace leveldb {
 
@@ -693,3 +698,4 @@ Env* Env::Default() {
 }
 
 }  // namespace leveldb
+#endif

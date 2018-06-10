@@ -18,6 +18,10 @@
 #include "util/coding.h"
 #include "util/logging.h"
 
+#if _MSC_VER>=1900
+#  define STDC99
+#endif
+
 namespace leveldb {
 
 static int TargetFileSize(const Options* options) {

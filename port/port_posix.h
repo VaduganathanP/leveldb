@@ -3,7 +3,7 @@
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 //
 // See port_example.h for documentation for the following types/functions.
-
+#if defined(LEVELDB_PLATFORM_POSIX)
 #ifndef STORAGE_LEVELDB_PORT_PORT_POSIX_H_
 #define STORAGE_LEVELDB_PORT_PORT_POSIX_H_
 
@@ -154,3 +154,4 @@ uint32_t AcceleratedCRC32C(uint32_t crc, const char* buf, size_t size);
 } // namespace leveldb
 
 #endif  // STORAGE_LEVELDB_PORT_PORT_POSIX_H_
+#endif
