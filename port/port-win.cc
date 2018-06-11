@@ -37,7 +37,9 @@
 #include <intrin.h>
 #else
 #include <stdint.h>
+#include <string.h>
 #endif
+
 
 namespace leveldb {
 	namespace port {
@@ -147,7 +149,34 @@ namespace leveldb {
 			rep_ = v;
 		}
 
-#if OS_WIN
+		enum InitializationState
+		{
+			Uninitialized = 0,
+			Running = 1,
+			Initialized = 2
+		};
+
+		void InitOnce(OnceType* once, void(*initializer)()) {
+
+			static_assert(Uninitialized == LEVELDB_ONCE_INIT, "Invalid uninitialized state value");
+
+			InitializationState state = static_cast<InitializationState>(InterlockedCompareExchange(once, Running, Uninitialized));
+
+			if (state == Uninitialized) {
+				initializer();
+				*once = Initialized;
+			}
+
+			if (state == Running) {
+				while (*once != Initialized) {
+					Sleep(0); // yield
+				}
+			}
+
+			assert(*once == Initialized);
+		}
+
+
 
 		// Used to fetch a naturally-aligned 32-bit word in little endian byte-order
 		static inline uint32_t LE_LOAD32(const uint8_t *p) {
@@ -182,12 +211,10 @@ namespace leveldb {
 #endif
 		}
 
-#endif  // OS_WIN
+
+
 
 		uint32_t AcceleratedCRC32C(uint32_t crc, const char* buf, size_t size) {
-#if !OS_WIN
-			return 0;
-#else
 			static bool have = HaveSSE42();
 			if (!have) {
 				return 0;
@@ -240,7 +267,7 @@ namespace leveldb {
 #undef STEP4
 #undef STEP1
 			return l ^ 0xffffffffu;
-#endif  // OS_WIN
+
 		}
 
 	}

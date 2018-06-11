@@ -248,9 +248,6 @@
     <ClInclude Include="port\port.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="port\port_example.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="port\port_posix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -312,6 +309,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="util\win_logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="port\port_example.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -45,8 +45,8 @@ void CondVar::SignalAll() {
   PthreadCall("broadcast", pthread_cond_broadcast(&cv_));
 }
 
-void InitOnce(OnceType* once, void (*initializer)()) {
-  PthreadCall("once", pthread_once(once, initializer));
+void InitOnce(OnceType* once, void(*initializer)()) {
+	PthreadCall("once", pthread_once(once, initializer));
 }
 
 }  // namespace port

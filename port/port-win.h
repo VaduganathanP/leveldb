@@ -37,7 +37,6 @@
 #define fread_unlocked _fread_nolock
 
 #include <string>
-
 #include <stdint.h>
 
 namespace leveldb {
@@ -111,11 +110,9 @@ namespace leveldb {
 		typedef volatile long OnceType;
 
 #define LEVELDB_ONCE_INIT (0)
-
 		extern void InitOnce(OnceType* once, void(*initializer)());
 
-		inline bool Snappy_Compress(const char* input, size_t length,
-			::std::string* output) {
+		inline bool Snappy_Compress(const char* input, size_t length, ::std::string* output) {
 #ifdef SNAPPY
 			output->resize(snappy::MaxCompressedLength(length));
 			size_t outlen;
@@ -149,7 +146,7 @@ namespace leveldb {
 			return false;
 		}
 
-		inline uint32_t AcceleratedCRC32C(uint32_t crc, const char* buf, size_t size);
+		uint32_t AcceleratedCRC32C(uint32_t crc, const char* buf, size_t size);
 
 	}
 }

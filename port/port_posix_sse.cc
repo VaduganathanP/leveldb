@@ -8,7 +8,7 @@
 // In a separate source file to allow this accelerated CRC32C function to be
 // compiled with the appropriate compiler flags to enable x86 SSE 4.2
 // instructions.
-
+#if defined(LEVELDB_PLATFORM_POSIX)
 #include <stdint.h>
 #include <string.h>
 #include "port/port.h"
@@ -127,3 +127,4 @@ uint32_t AcceleratedCRC32C(uint32_t crc, const char* buf, size_t size) {
 
 }  // namespace port
 }  // namespace leveldb
+#endif
