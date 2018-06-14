@@ -11,3 +11,4 @@ leveldbutil
 /obj
 /.vs/NitraLeveldb/v15
 /Release
+/.vs/NitraLeveldb/DesignTimeBuild
