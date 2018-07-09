@@ -9,8 +9,12 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\LeveldbWrapper\LeveldbWrapper.csproj" />
+    <PackageReference Include="LeveldbWrapper" Version="1.0.1" />
   </ItemGroup>
 
 </Project>

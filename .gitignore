@@ -12,3 +12,5 @@ leveldbutil
 /.vs/NitraLeveldb/v15
 /Release
 /.vs/NitraLeveldb/DesignTimeBuild
+/DemoLeveldbWrapper/bin
+/DemoLeveldbWrapper/obj

@@ -1,7 +1,9 @@
 ﻿using Leveldb;
+using Leveldb.Native;
 using System;
 using System.IO;
 using System.Reflection;
+using System.Text;
 
 namespace DemoLeveldbWrapper
 {
@@ -9,39 +11,34 @@ namespace DemoLeveldbWrapper
     {
         static void Main(string[] args)
         {
+            Init();
+            Console.ReadLine();
+        }
+
+       static void Init()
+        {
             try
             {
-                unsafe
+                byte[] resultVal;
+                sbyte[] err = new sbyte[] { };
+                string tempKey = "TempKey";
+                string tempValue = "TempValue";
+
+                using (DB db = new DB(err))
                 {
-                    fixed (sbyte* errptr1 = new sbyte[] { })
-                    {
-                        sbyte*[] errptr2 = { errptr1 };
-                        fixed (sbyte** errptr = errptr2)
-                        {
-                            Options options = NLDB.OptionsCreate();
-                            NLDB.OptionsSetCreateIfMissing(options, 1);
-                            NLDB.OptionsSetCompression(options, 1);
-                            string assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                            string dbPath = Path.Combine(assemblyPath, "DbFiles");
-                            if (!Directory.Exists(dbPath))
-                                Directory.CreateDirectory(dbPath);
-
-                            DB leveldb = NLDB.Open(options, dbPath, errptr);
-
-                            NLDB.Put(leveldb, NLDB.WriteoptionsCreate(), "TempKey", (ulong)"TempKey".Length, "TempVal", (ulong)"TempVal".Length, errptr);
-                            ulong vallen = 0;
-                            var resultVal = NLDB.Get(leveldb, NLDB.ReadoptionsCreate(), "Hi", (ulong)"Hi".Length, ref vallen, errptr);
-
-                        }
-                    }
+                    db.Put(tempKey, tempValue, err);
+                    ulong vallen = 0;
+                    resultVal = db.Get(tempKey, ref vallen, err);
+                    db.Delete(tempKey, err);
                 }
+                
 
+                string retStr = Encoding.UTF8.GetString(resultVal);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-            Console.ReadLine();
         }
     }
 }

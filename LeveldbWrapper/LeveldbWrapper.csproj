@@ -2,16 +2,26 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <Version>1.0.1</Version>
+    <Company>Vaduganathan</Company>
+    <Authors>Vaduganathan</Authors>
+    <Product />
+    <PackageProjectUrl>https://github.com/nitrachain/leveldb</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/nitrachain/leveldb/blob/master/LICENSE</PackageLicenseUrl>
+    <Description>Leveldb - v1.20 wrapper for c# .net</Description>
+    <PackageTags>Leveldb c# wrapper Leveldb-v1.20</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
   <ItemGroup>
-    <None Update="NitraLeveldb.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <PackageReference Include="NitraLeveldb" Version="1.0.7" />
   </ItemGroup>
 
 </Project>
