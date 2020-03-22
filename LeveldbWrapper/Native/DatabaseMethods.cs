@@ -116,13 +116,20 @@ namespace Leveldb.Native
 
         public static byte[] Get(global::Leveldb.DB db, global::Leveldb.Readoptions options, string key, ulong keylen, ref ulong vallen, sbyte[] errptr)
         {
-            var __arg0 = ReferenceEquals(db, null) ? global::System.IntPtr.Zero : db.__Instance;
-            var __arg1 = ReferenceEquals(options, null) ? global::System.IntPtr.Zero : options.__Instance;
-            fixed (ulong* __refParamPtr4 = &vallen)
+            try
             {
-                var __arg4 = __refParamPtr4;
-                var __ret = __Internal.Get(__arg0, __arg1, key, keylen, __arg4, MarshalHelper.SByteArrayToSbytePtrArray(errptr));
-                return MarshalHelper.IntPtrToByteArray((IntPtr)__ret, (int)vallen);
+                var __arg0 = ReferenceEquals(db, null) ? global::System.IntPtr.Zero : db.__Instance;
+                var __arg1 = ReferenceEquals(options, null) ? global::System.IntPtr.Zero : options.__Instance;
+                fixed (ulong* __refParamPtr4 = &vallen)
+                {
+                    var __arg4 = __refParamPtr4;
+                    var __ret = __Internal.Get(__arg0, __arg1, key, keylen, __arg4, MarshalHelper.SByteArrayToSbytePtrArray(errptr));
+                    return MarshalHelper.IntPtrToByteArray((IntPtr)__ret, (int)vallen);
+                }
+            }
+            catch
+            {
+                return null;
             }
         }
 

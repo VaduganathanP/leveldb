@@ -39,9 +39,16 @@ namespace Leveldb
 
         public byte[] Get(string key, ref ulong valLen, sbyte[] err, Readoptions readoptions = null)
         {
-            if (readoptions == null)
-                readoptions = ReadOptionsMethods.ReadoptionsCreate();
-            return DatabaseMethods.Get(_db, readoptions, key, (ulong)key.Length, ref valLen, err);
+            try
+            {
+                if (readoptions == null)
+                    readoptions = ReadOptionsMethods.ReadoptionsCreate();
+                return DatabaseMethods.Get(_db, readoptions, key, (ulong)key.Length, ref valLen, err);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public void Delete(string key, sbyte[] err, Writeoptions writeoptions = null)

@@ -1,0 +1,10 @@
+C:\Users\vpillappan\Documents\GitHub\leveldb\LeveldbWrapper\bin\Debug\netstandard2.0\NitraLeveldb.dll
+C:\Users\vpillappan\Documents\GitHub\leveldb\LeveldbWrapper\bin\Debug\netstandard2.0\LeveldbWrapper.deps.json
+C:\Users\vpillappan\Documents\GitHub\leveldb\LeveldbWrapper\bin\Debug\netstandard2.0\LeveldbWrapper.dll
+C:\Users\vpillappan\Documents\GitHub\leveldb\LeveldbWrapper\bin\Debug\netstandard2.0\LeveldbWrapper.pdb
+C:\Users\vpillappan\Documents\GitHub\leveldb\LeveldbWrapper\obj\Debug\netstandard2.0\LeveldbWrapper.csprojAssemblyReference.cache
+C:\Users\vpillappan\Documents\GitHub\leveldb\LeveldbWrapper\obj\Debug\netstandard2.0\LeveldbWrapper.csproj.CoreCompileInputs.cache
+C:\Users\vpillappan\Documents\GitHub\leveldb\LeveldbWrapper\obj\Debug\netstandard2.0\LeveldbWrapper.AssemblyInfoInputs.cache
+C:\Users\vpillappan\Documents\GitHub\leveldb\LeveldbWrapper\obj\Debug\netstandard2.0\LeveldbWrapper.AssemblyInfo.cs
+C:\Users\vpillappan\Documents\GitHub\leveldb\LeveldbWrapper\obj\Debug\netstandard2.0\LeveldbWrapper.dll
+C:\Users\vpillappan\Documents\GitHub\leveldb\LeveldbWrapper\obj\Debug\netstandard2.0\LeveldbWrapper.pdb

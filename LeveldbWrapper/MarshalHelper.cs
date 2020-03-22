@@ -50,8 +50,15 @@ namespace Leveldb
         public static byte[] IntPtrToByteArray(IntPtr @int, int length)
         {
             byte[] bytes = new byte[length];
-            Marshal.Copy(@int, bytes, 0, length);
-            Leveldb.Native.Utility.Free(@int);
+            try
+            {
+                Marshal.Copy(@int, bytes, 0, length);
+                Leveldb.Native.Utility.Free(@int);
+            }
+            catch
+            {
+
+            }
             return bytes;
         }
     }
